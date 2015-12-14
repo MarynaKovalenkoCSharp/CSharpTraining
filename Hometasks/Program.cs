@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hometask
+namespace Hometask1
 {
     class OverloadedFunctions
     {
