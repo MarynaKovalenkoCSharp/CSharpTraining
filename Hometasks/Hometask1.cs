@@ -42,7 +42,7 @@ namespace Hometask1
         Toosmall
     };
 
-    class Program
+    class Execute
     {
         static void Main(string[] args)
         {
