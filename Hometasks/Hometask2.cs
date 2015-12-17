@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Hometask2
+namespace Hometasks
 {
     class MessageForEachDay
     {
 
-        static void Main(string[] args)
+        public static void writeMessage()
         {
             DayOfWeek today = DateTime.Today.DayOfWeek;
             switch (today)

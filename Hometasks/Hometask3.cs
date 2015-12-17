@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Hometask3
+namespace Hometasks
 {
     class TodaysDay
     {
-        static void Main(string[] args)
+        public static void splitData()
         {
             DateTime myDate = new DateTime(2015, 12, 14);
             var dayParts = myDate.ToString("D").Split(',');
@@ -14,6 +14,7 @@ namespace Hometask3
             {
                 var part = dayParts[i];
                 Console.WriteLine(part.Trim());
+                
             }
             
         }

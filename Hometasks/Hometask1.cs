@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hometask1
+namespace Hometasks
 {
     class OverloadedFunctions
     {
@@ -41,14 +41,4 @@ namespace Hometask1
         TooBig,
         Toosmall
     };
-
-    class Execute
-    {
-        static void Main(string[] args)
-        {
-            OverloadedFunctions example = new OverloadedFunctions();
-            example.Func("string");
-            example.Func(-1);
-        }
-    }
 }
