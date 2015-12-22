@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Fixed.cs" />
     <Compile Include="Hourly.cs" />

@@ -9,13 +9,15 @@ namespace ConsoleApplication1
     public class FixedPayEmployee : Employee
     {
 
-        public override double calculateSallary(double rate)
+        public FixedPayEmployee(string name, string secondName, int id, double rate)
+            : base(name, secondName, id, rate)
         {
-            double averageMonthSallary = rate;
+        }
+        public override double calculateSallary()
+        {
+            double averageMonthSallary = Rate;
             return averageMonthSallary;
         }
-
-        
     }
 
 }

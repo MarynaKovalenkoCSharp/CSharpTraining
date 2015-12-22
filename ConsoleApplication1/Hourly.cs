@@ -8,10 +8,13 @@ namespace ConsoleApplication1
 {
     public class HourlyEmployee : Employee
     {
-        
-        public override double calculateSallary(double rate)
+        public HourlyEmployee(string name, string secondName, int id, double rate) : base(name, secondName, id, rate)
         {
-            double averageMonthSallary = rate * 20.8 * 8;
+        }
+
+        public override double calculateSallary()
+        {
+            double averageMonthSallary = Rate * 20.8 * 8;
             return averageMonthSallary;
         }
     }

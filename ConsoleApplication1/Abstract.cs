@@ -6,57 +6,32 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    abstract public class Employee
+    public abstract class Employee
     {
-        public string Name
+
+        public string Name { get; set; }
+
+        public string SecondName { get; set; }
+
+        public int Id { get; set; }
+
+        public double Rate { get; set; }
+
+        public double Sallary { get; set; }
+
+        public Employee()
         {
-            get
-            {
-                return Name;
-            }
-            set
-            {
-                Name = value;
-            }
-        }
-        public string SecondName
-        { 
-            get
-            {
-                return SecondName;
-            }
-            set
-            {
-                SecondName = value;
-            }
-        }
-        public int id
-        {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                id = value;
-            }
-        }
-    
-        public double rate
-        {
-        get
-            {
-                return rate;
-            }
-        set
-            {
-                rate = value;
-            }
         }
 
-        public abstract double calculateSallary(double rate);
+        public Employee(string name, string secondName, int id, double rate)
+        {
+            Name = name;
+            SecondName = secondName;
+            Id = id;
+            Rate = rate;
+        }
 
-        
+        public abstract double calculateSallary();
 
     }
 }
