@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ConsoleApplication1
+namespace Task6
 {
     class Writer
     {
@@ -20,6 +20,12 @@ namespace ConsoleApplication1
                 return empl1.Sallary.CompareTo(empl2.Sallary);
             }
         }
+
+        public void CreateWriter(string filePath)
+        {
+            StreamWriter writer = new StreamWriter(filePath);
+        }
+
 
         public void WriteSortedList(string filePath, List<Employee> employees)
         {
@@ -58,3 +64,4 @@ namespace ConsoleApplication1
         }   
     }
 }
+//TODO: EXCEPTION HANDLING (ADDING TO EXISTANT FILE)

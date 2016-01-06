@@ -1,4 +1,4 @@
-﻿using ConsoleApplication1;
+﻿using Task6;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RandomNameGeneratorLibrary;
 
-namespace ConsoleApplication1
+namespace Task6
 {
     class EmployeeListCreator
     {

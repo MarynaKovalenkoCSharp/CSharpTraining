@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace Task6
 {
     public abstract class Employee
     {
@@ -17,7 +17,14 @@ namespace ConsoleApplication1
 
         public double Rate { get; set; }
 
-        public double Sallary { get; set; }
+        public double Sallary
+        {
+            get
+            {
+                return CalculateSallary();
+            }
+            set;
+        }
 
         public Employee(string name, string secondName, int id, int rate)
         {
