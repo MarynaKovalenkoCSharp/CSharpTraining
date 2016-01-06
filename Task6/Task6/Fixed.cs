@@ -8,16 +8,15 @@ namespace ConsoleApplication1
 {
     public class FixedPayEmployee : Employee
     {
-
-        public FixedPayEmployee(string name, string secondName, int id, double rate)
+        public FixedPayEmployee(string name, string secondName, int id, int rate)
             : base(name, secondName, id, rate)
         {
         }
-         public override double calculateSallary()
+
+        public override double CalculateSallary()
         {
             double averageMonthSallary = Rate;
             return averageMonthSallary;
         }
     }
-
 }
