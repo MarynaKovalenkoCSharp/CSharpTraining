@@ -7,61 +7,59 @@ using System.IO;
 
 namespace Task6
 {
-    class Writer
+    public class MyWriter : StreamWriter
     {
-        public int Compare(Employee empl1, Employee empl2)
+        public MyWriter(string filePath)
+            : base(filePath)
         {
-            if (empl1.Sallary == empl2.Sallary)
-            {
-                return empl1.Name.CompareTo(empl2.Name);
-            }
-            else
-            {
-                return empl1.Sallary.CompareTo(empl2.Sallary);
-            }
+
         }
 
-        public void CreateWriter(string filePath)
+        public MyWriter(string filePath, bool appending)
+            : base(filePath, appending)
         {
-            StreamWriter writer = new StreamWriter(filePath);
-        }
-
-
-        public void WriteSortedList(string filePath, List<Employee> employees)
-        {
-            using (StreamWriter writer = new StreamWriter(filePath))
+            if (appending == true)
             {
-                employees.Sort(Compare);
-                foreach (Employee empl in employees)
+                try
                 {
-                    writer.WriteLine(empl.Id + "\t" + empl.Name + "\t" + empl.Sallary);
+                    StreamWriter writer = new StreamWriter(filePath, appending);
+                }
+                catch (IOException exception)
+                {
+                    this.Close();
+                    throw new IOException("File can't be written: " + exception.GetType().Name);
                 }
             }
         }
 
-        public void WriteFirstEmployees(string filePath, List<Employee> employees, int employeesQuantity)
+        public void WriteData(List<Employee> employees, bool shuoldSort = true)
         {
-            using (StreamWriter writer = new StreamWriter(filePath))
+            employees.Sort(Employee.Compare);
+            employees.Reverse();
+            foreach (Employee empl in employees)
             {
-                employees.Sort(Compare);
-                foreach (Employee empl in employees.Take(employeesQuantity))
-                {
-                    writer.WriteLine(empl.Name);
-                }
+                this.WriteLine(empl.Id + "\t" + empl.Name + "\t" + empl.Sallary);
             }
         }
 
-        public void WriteLastIds(string filePath, List<Employee> employees, int idQuantity)
+        public void WriteData(List<Employee> employees, int employeesQuantity)
         {
-            using (StreamWriter writer = new StreamWriter(filePath))
+            employees.Sort(Employee.Compare);
+            foreach (Employee empl in employees.Take(employeesQuantity))
             {
-                employees.Sort(Compare);
-                foreach (Employee empl in employees.Skip(employees.Count() - idQuantity))
-                {
-                    writer.WriteLine(empl.Id);
-                }
+                this.WriteLine(empl.Name);
             }
-        }   
+        }
+
+
+        public void WriteData(List<Employee> employees)
+        {
+            employees.Sort(Employee.Compare);
+            foreach (Employee empl in employees)
+            {
+                this.WriteLine(empl.Id);
+            }
+        }
+
     }
 }
-//TODO: EXCEPTION HANDLING (ADDING TO EXISTANT FILE)

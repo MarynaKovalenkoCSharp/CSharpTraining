@@ -14,7 +14,7 @@ namespace Task6
             {
                 Console.WriteLine("{0} {1}", empl.Name, empl.Sallary);
             }
-            Console.ReadKey();
+            //Console.ReadKey();
             return employees;
         }
 

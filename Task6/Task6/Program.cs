@@ -17,11 +17,10 @@ namespace Task6
             ListHandler newHandler = new ListHandler();
             newHandler.CalculateSallary(list);
 
-            Writer newWriter = new Writer();
-            newWriter.WriteSortedList(@"D:\sortedBySallary.txt", list);
-            newWriter.WriteFirstEmployees(@"D:\firstFiveEmployees.txt", list, 5);
-            newWriter.WriteLastIds(@"D:\lastThreeIds.txt", list, 3);
-
+            MyWriter newWriter = new MyWriter(@"D:\Employees.txt");
+            newWriter.WriteData(list);
+            newWriter.WriteData(list.Skip(list.Count() - 3));
+            newWriter.Close();
         }
     }
 }
