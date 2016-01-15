@@ -1,0 +1,6 @@
+C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\bin\Release\Hometasks.exe.config
+C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\bin\Release\Hometasks.exe
+C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\bin\Release\Hometasks.pdb
+C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\obj\Release\Hometasks.exe
+C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\obj\Release\Hometasks.pdb
+C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\obj\Release\Hometasks.csprojResolveAssemblyReference.cache
