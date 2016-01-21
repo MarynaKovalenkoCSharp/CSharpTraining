@@ -8,3 +8,6 @@ C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Task6\Task6\bin\Debug\Rand
 C:\Users\maryna.kovalenko\Documents\Visual Studio 2012\Projects\Task6\Task6\bin\Debug\Task6.exe.config
 C:\Users\maryna.kovalenko\Documents\Visual Studio 2012\Projects\Task6\Task6\obj\Debug\Task6.exe
 C:\Users\maryna.kovalenko\Documents\Visual Studio 2012\Projects\Task6\Task6\obj\Debug\Task6.pdb
+D:\Projects\Task6\Task6\bin\Debug\Task6.exe.config
+D:\Projects\Task6\Task6\obj\Debug\Task6.exe
+D:\Projects\Task6\Task6\obj\Debug\Task6.pdb
