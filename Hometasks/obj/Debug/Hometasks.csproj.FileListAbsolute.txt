@@ -1,6 +1,0 @@
-C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\bin\Debug\Hometasks.exe.config
-C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\bin\Debug\Hometasks.exe
-C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\bin\Debug\Hometasks.pdb
-C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\obj\Debug\Hometasks.csprojResolveAssemblyReference.cache
-C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\obj\Debug\Hometasks.exe
-C:\Users\maryna.kovalenko\Source\Repos\CSharpTraining\Hometasks\obj\Debug\Hometasks.pdb
