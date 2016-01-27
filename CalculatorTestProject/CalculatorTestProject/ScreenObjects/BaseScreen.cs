@@ -18,6 +18,7 @@ namespace CalculatorTestSuite
     abstract public class BaseScreen
     {
         public Window screen;
+
         public abstract string Title { get; }
 
         public BaseScreen(Window window)

@@ -14,11 +14,14 @@ namespace CalculatorTestSuite
 {
     public class CalculatorTests : IDisposable
     {
-        public Application calcApp;
+        //public Application calcApp;
+        public CalculatorScreen mainWindow;
+
 
         public CalculatorTests()
         {
             calcApp = CalculatorApp.Instance.LaunchApp();
+            mainWindow = CalculatorApp.GetCalcWindow<CalculatorScreen>("Calculator");
         }
 
         public void Dispose()
@@ -84,7 +87,6 @@ namespace CalculatorTestSuite
         [Fact]
         public void CheckAddition()
         {
-            CalculatorScreen mainWindow = new CalculatorScreen(calcApp.GetWindow(CalculatorScreen.TITLE));
             mainWindow.SetValue("2");
             mainWindow.SetOperation(Operation.Add);
             mainWindow.SetValue("3");
@@ -98,7 +100,6 @@ namespace CalculatorTestSuite
         [MemberData("InputDataPositive")]
         public void PositiveOperationsDataDriven(string iterationName, CalcDataSet calcData)
         {
-            CalculatorScreen mainWindow = new CalculatorScreen(calcApp.GetWindow(CalculatorScreen.TITLE));
             mainWindow.SetValue(calcData.FirstValue);
             mainWindow.SetOperation(calcData.Operation);
             mainWindow.SetValue(calcData.SecondValue);
@@ -111,7 +112,6 @@ namespace CalculatorTestSuite
         [MemberData("InputDataNegative")]
         public void NegativeOperationsDataDriven(string iterationName, CalcDataSet calcData)
         {
-            CalculatorScreen mainWindow = new CalculatorScreen(calcApp.GetWindow(CalculatorScreen.TITLE));
             mainWindow.SetValue(calcData.FirstValue);
             mainWindow.SetOperation(calcData.Operation);
             mainWindow.SetValue(calcData.SecondValue);
@@ -123,7 +123,6 @@ namespace CalculatorTestSuite
         [Fact]
         public void CheckAdditionPageObject()
         {
-            CalculatorScreen mainWindow = new CalculatorScreen(calcApp.GetWindow(CalculatorScreen.TITLE));
             mainWindow.SetValue("1");
             mainWindow.SetOperation(Operation.Add);
             mainWindow.SetValue("2");
@@ -136,18 +135,17 @@ namespace CalculatorTestSuite
         [Fact]
         public void VerifyVersionInAboutWindow()
         {
-            CalculatorScreen mainWindow = new CalculatorScreen(calcApp.GetWindow(CalculatorScreen.TITLE));
             mainWindow.HelpMenu.Click();
             mainWindow.AboutCalculatorMenu.Click();
-            AboutScreen aboutWindow = new AboutScreen(mainWindow.screen.ModalWindow(AboutScreen.TITLE));
+            AboutScreen aboutWindow = CalculatorApp.GetCalcWindow<AboutScreen>("About Calculator");
             string expectedResult = "Version 6.1";
             Assert.Contains(expectedResult, aboutWindow.VersionInformation.Text);
         }
     }
 
     //TODO: 1. поменять структуру файлов в Солюшен Эксплорер, 
-    //2. Сделать возвращение скринов через дженерик, 
-    //3. Прочитать про Фабрику, 
-    //4. Выделить общее из тестов, 
-    //5. Придумать что еще можно реализовать через Синглтон
+    //TODO 2. Сделать возвращение скринов через дженерик, 
+    //TODO 3. Прочитать про Фабрику, 
+    //TODO 4. Выделить общее из тестов, 
+    //TODO 5. Придумать что еще можно реализовать через Синглтон
 }
