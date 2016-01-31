@@ -83,12 +83,14 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="BaseModal.cs" />
     <Compile Include="Helpers\CalculatorApp.cs" />
     <Compile Include="Helpers\InvalidWindowException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenObjects\AboutScreen.cs" />
     <Compile Include="ScreenObjects\BaseScreen.cs" />
     <Compile Include="ScreenObjects\CalculatorScreen.cs" />
+    <Compile Include="ScreensFactory.cs" />
     <Compile Include="TestSuites\CalculatorTests.cs" />
   </ItemGroup>
   <ItemGroup>

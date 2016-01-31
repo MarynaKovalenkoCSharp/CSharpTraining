@@ -19,6 +19,7 @@ namespace CalculatorTestSuite
     {
         private static CalculatorApp instance;
         private static Application calcApp;
+        private const string PATH = @"C:\Windows\System32\calc.exe";
 
         private CalculatorApp()
         {
@@ -38,8 +39,7 @@ namespace CalculatorTestSuite
 
         public Application LaunchApp()
         {
-            //TODO: move path to config file (manager)
-            calcApp = Application.Launch(@"C:\Windows\System32\calc.exe");
+            calcApp = Application.Launch(PATH);
             return calcApp;
         }
 
@@ -48,23 +48,24 @@ namespace CalculatorTestSuite
             calcApp.Close();
         }
 
-        public static T GetCalcWindow<T>(string title) 
-            where T : BaseScreen
+       public static T GetBaseWindow<T>(string title)
+            where T : BaseScreen, new()
+        {
+            BaseScreen baseWindow = new T();
+            return baseWindow;
+        }
+
+        public static T GetModalWindow<T>(string title)
+            where T : BaseModal
+        {
+            BaseModal modalWindow = new T();
+            return modalWindow;
+        }
             //TODO: create property isModal in BaseScreen. By default it should be set to FALSE in constructor. Pass it with title as parameter and return corresponding screen.
             //TODO: modal window should get parent window as parameter
-        {
-            switch (title)
-            {
-                default:
-                    throw new InvalidWindowException();
-                case "Calculator":
-                    return new CalculatorScreen(calcApp.GetWindow(title)) as T;
-                case "About Calculator":
-                    return new AboutScreen(calcApp.GetWindow("Calculator").ModalWindow(title)) as T;
-            };
             //TODO: custom UI item; 
             //TODO: create factory for screens
             //TODO: read about screen repository
-        }
     }
 }
+

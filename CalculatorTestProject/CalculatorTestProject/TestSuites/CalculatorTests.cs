@@ -14,13 +14,13 @@ namespace CalculatorTestSuite
 {
     public class CalculatorTests : IDisposable
     {
-        //public Application calcApp;
         public CalculatorScreen mainWindow;
-
+        //TODO: add "modal" property in constructors
 
         public CalculatorTests()
         {
-            calcApp = CalculatorApp.Instance.LaunchApp();
+            Application calcApp = CalculatorApp.Instance.LaunchApp();
+            //mainWindow = ScreensFactory.GetScreen("Calculator");
             mainWindow = CalculatorApp.GetCalcWindow<CalculatorScreen>("Calculator");
         }
 
@@ -142,10 +142,4 @@ namespace CalculatorTestSuite
             Assert.Contains(expectedResult, aboutWindow.VersionInformation.Text);
         }
     }
-
-    //TODO: 1. поменять структуру файлов в Солюшен Эксплорер, 
-    //TODO 2. Сделать возвращение скринов через дженерик, 
-    //TODO 3. Прочитать про Фабрику, 
-    //TODO 4. Выделить общее из тестов, 
-    //TODO 5. Придумать что еще можно реализовать через Синглтон
 }
