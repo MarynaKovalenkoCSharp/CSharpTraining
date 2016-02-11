@@ -21,6 +21,8 @@ namespace CalculatorTestSuite
 
         public abstract string Title { get; }
 
+        public abstract bool IsModal { get; }
+
         public BaseScreen(Window window)
         {
             if (!window.Title.Equals(Title))

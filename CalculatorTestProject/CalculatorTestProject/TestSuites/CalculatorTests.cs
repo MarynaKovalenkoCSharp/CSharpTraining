@@ -15,12 +15,10 @@ namespace CalculatorTestSuite
     public class CalculatorTests : IDisposable
     {
         public CalculatorScreen mainWindow;
-        //TODO: add "modal" property in constructors
 
         public CalculatorTests()
         {
             Application calcApp = CalculatorApp.Instance.LaunchApp();
-            //mainWindow = ScreensFactory.GetScreen("Calculator");
             mainWindow = CalculatorApp.GetCalcWindow<CalculatorScreen>("Calculator");
         }
 

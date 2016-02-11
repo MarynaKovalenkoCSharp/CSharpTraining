@@ -48,24 +48,25 @@ namespace CalculatorTestSuite
             calcApp.Close();
         }
 
-       public static T GetBaseWindow<T>(string title)
-            where T : BaseScreen, new()
+        public static T GetCalcWindow<T>(string title)
+            where T : BaseScreen
         {
-            BaseScreen baseWindow = new T();
-            return baseWindow;
+            switch (title)
+            {
+                default:
+                    throw new InvalidWindowException();
+                case "Calculator":
+                    return new CalculatorScreen(calcApp.GetWindow(title)) as T;
+                case "About Calculator":
+                    return new AboutScreen(calcApp.GetWindow("Calculator").ModalWindow(title)) as T;
+            };
         }
-
-        public static T GetModalWindow<T>(string title)
-            where T : BaseModal
-        {
-            BaseModal modalWindow = new T();
-            return modalWindow;
-        }
-            //TODO: create property isModal in BaseScreen. By default it should be set to FALSE in constructor. Pass it with title as parameter and return corresponding screen.
-            //TODO: modal window should get parent window as parameter
-            //TODO: custom UI item; 
-            //TODO: create factory for screens
-            //TODO: read about screen repository
     }
 }
+    //TODO: create property isModal in BaseScreen. By default it should be set to FALSE in constructor. Pass it with title as parameter and return corresponding screen.
+    //TODO: modal window should get parent window as parameter
+    //TODO: custom UI item; 
+    //TODO: create factory for screens
+    //TODO: read about screen repository
+
 

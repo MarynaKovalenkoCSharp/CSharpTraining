@@ -15,9 +15,18 @@ using TestStack.White.UIItems.WindowStripControls;
 
 namespace CalculatorTestSuite
 {
-    public class AboutScreen : BaseModal
+    public class AboutScreen : BaseScreen
     {
         public const string TITLE = "About Calculator";
+
+        public override bool IsModal
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         public override string Title
         {
             get

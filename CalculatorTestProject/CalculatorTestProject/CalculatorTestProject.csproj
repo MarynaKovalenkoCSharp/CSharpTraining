@@ -83,7 +83,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="BaseModal.cs" />
     <Compile Include="Helpers\CalculatorApp.cs" />
     <Compile Include="Helpers\InvalidWindowException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

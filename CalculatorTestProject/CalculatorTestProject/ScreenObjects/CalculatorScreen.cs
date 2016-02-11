@@ -19,6 +19,14 @@ namespace CalculatorTestSuite
     {
         public const string TITLE = "Calculator";
 
+        public override bool IsModal
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public override string Title
         {
             get
