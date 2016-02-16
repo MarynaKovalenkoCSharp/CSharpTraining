@@ -12,6 +12,7 @@ using TestStack.White.UIItems;
 using Xunit.Sdk;
 using Xunit.Extensions;
 using TestStack.White.UIItems.WindowStripControls;
+using System.Reflection;
 
 namespace CalculatorTestSuite
 {
@@ -19,7 +20,7 @@ namespace CalculatorTestSuite
     {
         private static CalculatorApp instance;
         private static Application calcApp;
-        private const string PATH = @"C:\Windows\System32\calc.exe";
+        private const string PATH = @"C:\Windows\System32\calc1.exe";
 
         private CalculatorApp()
         {
@@ -48,25 +49,24 @@ namespace CalculatorTestSuite
             calcApp.Close();
         }
 
-        public static T GetCalcWindow<T>(string title)
+        public static T GetScreen<T>(string title)
             where T : BaseScreen
         {
-            switch (title)
+            Type type = typeof(T);
+            MethodInfo method = type.GetMethod("IsModal", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
+            //object classInstance = Activator.CreateInstance(type, null);
+
+            if ((bool)method.Invoke(null, null))
             {
-                default:
-                    throw new InvalidWindowException();
-                case "Calculator":
-                    return new CalculatorScreen(calcApp.GetWindow(title)) as T;
-                case "About Calculator":
-                    return new AboutScreen(calcApp.GetWindow("Calculator").ModalWindow(title)) as T;
+                return new AboutScreen(calcApp.GetWindow("Calculator").ModalWindow(title)) as T;
+            }
+            else
+            {
+                return new CalculatorScreen(calcApp.GetWindow(title)) as T; 
             };
         }
     }
 }
-    //TODO: create property isModal in BaseScreen. By default it should be set to FALSE in constructor. Pass it with title as parameter and return corresponding screen.
-    //TODO: modal window should get parent window as parameter
-    //TODO: custom UI item; 
-    //TODO: create factory for screens
-    //TODO: read about screen repository
+
 
 

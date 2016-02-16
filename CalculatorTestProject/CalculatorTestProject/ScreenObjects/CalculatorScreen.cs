@@ -19,14 +19,18 @@ namespace CalculatorTestSuite
     {
         public const string TITLE = "Calculator";
 
-        public override bool IsModal
+        public static bool IsModal()
+        {
+            return false;
+        }
+
+        public Name Name
         {
             get
             {
-                return false;
+                return Name.Calculator;
             }
         }
-
         public override string Title
         {
             get

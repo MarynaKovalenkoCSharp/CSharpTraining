@@ -8,14 +8,14 @@ namespace CalculatorTestSuite
 {
     static class ScreensFactory
     {
-        public static BaseScreen GetScreen(string title, bool isModal = false)
+        public static BaseScreen GetScreen(string title, Name name = Name.Calculator)
         {
-            switch (isModal)
+            switch (name)
             {
-                case true:
-                    return CalculatorApp.GetCalcWindow<AboutScreen>(title);
+                case Name.About:
+                    return CalculatorApp.GetScreen<AboutScreen>(title);
                 default:
-                    return CalculatorApp.GetCalcWindow<CalculatorScreen>(title);
+                    return CalculatorApp.GetScreen<CalculatorScreen>(title);
             }
         }
     }

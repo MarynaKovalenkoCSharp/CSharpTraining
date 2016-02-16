@@ -19,7 +19,7 @@ namespace CalculatorTestSuite
         public CalculatorTests()
         {
             Application calcApp = CalculatorApp.Instance.LaunchApp();
-            mainWindow = CalculatorApp.GetCalcWindow<CalculatorScreen>("Calculator");
+            mainWindow = CalculatorApp.GetScreen<CalculatorScreen>("Calculator");
         }
 
         public void Dispose()
@@ -135,8 +135,8 @@ namespace CalculatorTestSuite
         {
             mainWindow.HelpMenu.Click();
             mainWindow.AboutCalculatorMenu.Click();
-            AboutScreen aboutWindow = CalculatorApp.GetCalcWindow<AboutScreen>("About Calculator");
-            string expectedResult = "Version 6.1";
+            AboutScreen aboutWindow = CalculatorApp.GetScreen<AboutScreen>("About Calculator");
+            string expectedResult = "Version 1511";
             Assert.Contains(expectedResult, aboutWindow.VersionInformation.Text);
         }
     }
