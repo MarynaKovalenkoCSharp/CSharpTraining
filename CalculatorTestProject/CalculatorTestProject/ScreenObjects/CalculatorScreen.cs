@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestStack.White;
-using TestStack.White.Factory;
-using TestStack.White.UIItems.Finders;
-using TestStack.White.UIItems.MenuItems;
+﻿using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UIItems;
-using Xunit.Sdk;
-using Xunit.Extensions;
-using TestStack.White.UIItems.WindowStripControls;
+using TestStack.White.ScreenObjects;
+using TestStack.White.ScreenObjects.ScreenAttributes;
 
 namespace CalculatorTestSuite
 {
@@ -24,13 +15,14 @@ namespace CalculatorTestSuite
             return false;
         }
 
-        public Name Name
+        public virtual MyEnum.Name Name
         {
             get
             {
-                return Name.Calculator;
+                return MyEnum.Name.Calculator;
             }
         }
+
         public override string Title
         {
             get
@@ -39,106 +31,36 @@ namespace CalculatorTestSuite
             }
         }
 
-        public Button OneButton
+        [AutomationId("93")]
+        public Button AddButton;
+
+        [AutomationId("94")]
+        public Button SubtractButton;
+
+        [AutomationId("91")]
+        public Button DivideButton;
+
+        [AutomationId("92")]
+        public Button MultiplyButton;
+
+        [AutomationId("121")]
+        public Button EqualButton;
+
+        [AutomationId("150")]
+        public Label ResultLabel;
+
+        [AutomationId("Item 3")]
+        public Menu HelpMenu;
+
+        [AutomationId("Item 302")]
+        public Menu AboutCalculatorMenu;
+
+        public virtual void SetValue(string value)
         {
-            get
-            {
-                return screen.Get<Button>(SearchCriteria.ByAutomationId("131"));
-            }
+            screen.Get<Button>(value).Click();
         }
 
-        public Button TwoButton
-        {
-            get
-            {
-                return screen.Get<Button>(SearchCriteria.ByAutomationId("132"));
-            }
-        }
-
-        public Button ThreeButton
-        {
-            get
-            {
-                return screen.Get<Button>(SearchCriteria.ByAutomationId("133"));
-            }
-        }
-
-        public Button AddButton
-        {
-            get
-            {
-                return screen.Get<Button>(SearchCriteria.ByAutomationId("93"));
-            }
-        }
-
-        public Button SubtractButton
-        {
-            get
-            {
-                return screen.Get<Button>(SearchCriteria.ByAutomationId("94"));
-            }
-        }
-
-        public Button DivideButton
-        {
-            get
-            {
-                return screen.Get<Button>(SearchCriteria.ByAutomationId("91"));
-            }
-        }
-
-        public Button MultiplyButton
-        {
-            get
-            {
-                return screen.Get<Button>(SearchCriteria.ByAutomationId("92"));
-            }
-        }
-
-        public Button EqualButton
-        {
-            get
-            {
-                return screen.Get<Button>(SearchCriteria.ByAutomationId("121"));
-            }
-        }
-
-        public Label ResultLabel
-        {
-            get
-            {
-                return screen.Get<Label>(SearchCriteria.ByAutomationId("150"));
-            }
-        }
-
-        public Menu HelpMenu
-        {
-            get
-            {
-                return screen.Get<Menu>(SearchCriteria.ByAutomationId("Item 3"));
-            }
-        }
-
-        public Menu AboutCalculatorMenu
-        {
-            get
-            {
-                return screen.Get<Menu>(SearchCriteria.ByAutomationId("Item 302"));
-            }
-        }
-
-        public CalculatorScreen(Window window)
-            : base(window)
-        {
-
-        }
-
-        public void SetValue(string value)
-        {
-            screen.Get<Button>(SearchCriteria.ByText(value)).Click();
-        }
-
-        public void SetOperation(Operation operation)
+        public virtual void SetOperation(Operation operation)
         {
             switch (operation)
             {
@@ -155,6 +77,13 @@ namespace CalculatorTestSuite
                     DivideButton.Click();
                     break;
             }
+        }
+
+
+        public CalculatorScreen(Window window, ScreenRepository screenRepository)
+             : base(window, screenRepository)
+        {
+
         }
     }
 

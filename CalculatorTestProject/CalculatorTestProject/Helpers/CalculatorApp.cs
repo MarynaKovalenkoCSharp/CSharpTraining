@@ -1,25 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestStack.White;
-using TestStack.White.Factory;
-using TestStack.White.UIItems.Finders;
-using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.WindowItems;
-using TestStack.White.UIItems;
-using Xunit.Sdk;
-using Xunit.Extensions;
-using TestStack.White.UIItems.WindowStripControls;
 using System.Reflection;
+using TestStack.White.ScreenObjects;
+using TestStack.White.Factory;
 
 namespace CalculatorTestSuite
 {
     class CalculatorApp
     {
         private static CalculatorApp instance;
+
         private static Application calcApp;
+
+        private static Window MainWindow
+        {
+            get { return calcApp.GetWindow("Calculator"); }
+        }
         private const string PATH = @"C:\Windows\System32\calc1.exe";
 
         private CalculatorApp()
@@ -44,27 +41,30 @@ namespace CalculatorTestSuite
             return calcApp;
         }
 
-        public void ShutDownApp()
+        public void ShutDown()
         {
             calcApp.Close();
         }
-
-        public static T GetScreen<T>(string title)
+    
+        public static T GetScreen<T>(string title, ScreenRepository screenRepository)
             where T : BaseScreen
         {
             Type type = typeof(T);
             MethodInfo method = type.GetMethod("IsModal", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
-            //object classInstance = Activator.CreateInstance(type, null);
-
+            Window window;
             if ((bool)method.Invoke(null, null))
             {
-                return new AboutScreen(calcApp.GetWindow("Calculator").ModalWindow(title)) as T;
+                window = MainWindow.ModalWindow(title);
             }
             else
             {
-                return new CalculatorScreen(calcApp.GetWindow(title)) as T; 
+                window = MainWindow;
             };
-        }
+
+            return (T)ScreensFactory.GetScreen(window, screenRepository, MyEnum.ParseEnum(title));
+                //Attributes
+                //LazyInitialization
+        }   
     }
 }
 

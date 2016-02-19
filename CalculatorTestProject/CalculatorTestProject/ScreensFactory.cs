@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TestStack.White.ScreenObjects;
+using TestStack.White.UIItems.WindowItems;
 
 namespace CalculatorTestSuite
 {
     static class ScreensFactory
     {
-        public static BaseScreen GetScreen(string title, Name name = Name.Calculator)
+        public static BaseScreen GetScreen(Window window, ScreenRepository screenRepository, MyEnum.Name name = MyEnum.Name.Calculator)
         {
-            switch (name)
+            switch(name) 
             {
-                case Name.About:
-                    return CalculatorApp.GetScreen<AboutScreen>(title);
                 default:
-                    return CalculatorApp.GetScreen<CalculatorScreen>(title);
+                    return new CalculatorScreen(window, screenRepository);
+                case MyEnum.Name.About:
+                    return new AboutScreen(window, screenRepository);
             }
         }
     }

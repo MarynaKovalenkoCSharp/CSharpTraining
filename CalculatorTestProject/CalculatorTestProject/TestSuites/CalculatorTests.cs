@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Linq;
 using Xunit;
 using TestStack.White;
-using TestStack.White.Factory;
-using TestStack.White.UIItems.Finders;
-using TestStack.White.UIItems.WindowItems;
-using TestStack.White.UIItems;
-using Xunit.Sdk;
-using Xunit.Extensions;
 using System.Collections.Generic;
+using TestStack.White.ScreenObjects;
+using TestStack.White.Factory;
 
 namespace CalculatorTestSuite
 {
@@ -16,15 +11,21 @@ namespace CalculatorTestSuite
     {
         public CalculatorScreen mainWindow;
 
+        public ScreenRepository screenRepository;
+
+        Application calcApp;
+
         public CalculatorTests()
         {
-            Application calcApp = CalculatorApp.Instance.LaunchApp();
-            mainWindow = CalculatorApp.GetScreen<CalculatorScreen>("Calculator");
+            calcApp = CalculatorApp.Instance.LaunchApp();
+            screenRepository = new ScreenRepository(calcApp.ApplicationSession);
+            mainWindow = screenRepository.Get<CalculatorScreen>(CalculatorScreen.TITLE, InitializeOption.NoCache);
+            //mainWindow = CalculatorApp.GetScreen<CalculatorScreen>("Calculator", screenRepository);
         }
 
         public void Dispose()
         {
-            CalculatorApp.Instance.ShutDownApp();
+            CalculatorApp.Instance.ShutDown();
         }
 
         public class CalcDataSet
@@ -135,7 +136,7 @@ namespace CalculatorTestSuite
         {
             mainWindow.HelpMenu.Click();
             mainWindow.AboutCalculatorMenu.Click();
-            AboutScreen aboutWindow = CalculatorApp.GetScreen<AboutScreen>("About Calculator");
+            AboutScreen aboutWindow = screenRepository.GetModal<AboutScreen>(AboutScreen.TITLE, calcApp.GetWindow(CalculatorScreen.TITLE), InitializeOption.NoCache);
             string expectedResult = "Version 1511";
             Assert.Contains(expectedResult, aboutWindow.VersionInformation.Text);
         }
