@@ -13,9 +13,9 @@ namespace CalculatorTestSuite
 
         private static Application calcApp;
 
-        private static Window MainWindow
+        public static Window MainWindow
         {
-            get { return calcApp.GetWindow("Calculator"); }
+            get { return calcApp.GetWindow(CalculatorScreen.TITLE); }
         }
         private const string PATH = @"C:\Windows\System32\calc1.exe";
 
@@ -62,8 +62,6 @@ namespace CalculatorTestSuite
             };
 
             return (T)ScreensFactory.GetScreen(window, screenRepository, MyEnum.ParseEnum(title));
-                //Attributes
-                //LazyInitialization
         }   
     }
 }

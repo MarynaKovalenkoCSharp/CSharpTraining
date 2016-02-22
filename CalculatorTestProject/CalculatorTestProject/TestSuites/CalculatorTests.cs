@@ -20,7 +20,6 @@ namespace CalculatorTestSuite
             calcApp = CalculatorApp.Instance.LaunchApp();
             screenRepository = new ScreenRepository(calcApp.ApplicationSession);
             mainWindow = screenRepository.Get<CalculatorScreen>(CalculatorScreen.TITLE, InitializeOption.NoCache);
-            //mainWindow = CalculatorApp.GetScreen<CalculatorScreen>("Calculator", screenRepository);
         }
 
         public void Dispose()
@@ -136,7 +135,7 @@ namespace CalculatorTestSuite
         {
             mainWindow.HelpMenu.Click();
             mainWindow.AboutCalculatorMenu.Click();
-            AboutScreen aboutWindow = screenRepository.GetModal<AboutScreen>(AboutScreen.TITLE, calcApp.GetWindow(CalculatorScreen.TITLE), InitializeOption.NoCache);
+            AboutScreen aboutWindow = screenRepository.GetModal<AboutScreen>(AboutScreen.TITLE, CalculatorApp.MainWindow, InitializeOption.NoCache);
             string expectedResult = "Version 1511";
             Assert.Contains(expectedResult, aboutWindow.VersionInformation.Text);
         }
