@@ -85,18 +85,22 @@
   <ItemGroup>
     <Compile Include="Helpers\CalculatorApp.cs" />
     <Compile Include="Helpers\InvalidWindowException.cs" />
-    <Compile Include="NameEnum.cs" />
+    <Compile Include="Helpers\NameEnum.cs" />
+    <Compile Include="Helpers\ScreensFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenObjects\AboutScreen.cs" />
     <Compile Include="ScreenObjects\BaseScreen.cs" />
     <Compile Include="ScreenObjects\CalculatorScreen.cs" />
-    <Compile Include="ScreensFactory.cs" />
     <Compile Include="TestSuites\CalculatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="calc1.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
